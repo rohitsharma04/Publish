@@ -63,7 +63,7 @@ def edit_article(request,slug):
 		if form.is_valid():
 			article = Article.objects.get(slug=slug,user=request.user)
 			form = ArticleForm(request.POST, instance = article)
-			form.save(commit=False)
+			form.update(commit=False)
 			return HttpResponseRedirect(article.get_absolute_url())
 		else:
 			raise Http404

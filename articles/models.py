@@ -47,7 +47,7 @@ class ArticleForm(ModelForm):
 		instance.save()
 		return instance
 
-	def save(self,commit=True):
+	def update(self,commit=True):
 		instance = super(ArticleForm, self).save(commit=False)
 		instance.save()
 		return instance
