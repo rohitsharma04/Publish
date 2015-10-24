@@ -19,6 +19,16 @@ from django.contrib import admin
 from userauths.views import *
 from articles.views import *
 
+#for api's
+from tastypie.api import Api 
+from api.resources import ArticleResource, UserResource
+
+v1_api = Api(api_name='v1')
+v1_api.register(ArticleResource())
+v1_api.register(UserResource())
+
+
+
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
 	
@@ -28,9 +38,13 @@ urlpatterns = [
     url(r'^my$',my_articles,name='my_articles'),
     url(r'^article/(?P<slug>[\w-]+)/',single_article,name="single_article"),
     url(r'^edit/(?P<slug>[\w-]+)/',edit_article,name="edit_article"),
+    
     #authusers app
 	url(r'^logout/',logout_view,name='logout_view'),
     url(r'^login/',login_view,name='login_view'),
     url(r'^signup/',signup_view,name='signup_view'),
     url(r'^home/',user_home,name='user_home'),
+    
+    #Api's
+    url(r'^api/',include(v1_api.urls)),
 ]
