@@ -25,9 +25,13 @@ def single_article(request, slug):
 
 def search_article(request):
 	query = request.GET.get('query')
-
+	cat = request.GET.get('category')
 	if query:
-		articles = Article.objects.filter(title__icontains=query).order_by('-updated').all()
+		if cat == 'title':
+			articles = Article.objects.filter(title__icontains=query).order_by('-updated').all()
+		else:
+			articles = Article.objects.filter(content__icontains=query).order_by('-updated').all()
+			
 		context = {'articles':articles}
 		template = "articles/search_articles.html"
 		return render(request,template,context)
