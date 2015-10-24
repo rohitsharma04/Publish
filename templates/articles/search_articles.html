@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Search | {% endblock %}
+
+{% block container %}
+<div class="col-md-2">
+
+</div>
+
+<div class="container">
+
+	{% if articles %}
+
+	<div class="col-md-8">
+		<div class="row">
+			<div class="col-md-12">
+				{% for article in articles %}
+					<div class="panel panel-default">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">
+					    	<a href="{{ article.get_absolute_url }}"><strong>{{article.title}}</strong> by <i>{{article.user.username}}</i></a>
+					    </h3>
+					  </div>
+					  <div class="panel-body">
+					    {{article.content|truncatewords:100}}<a href="{{ article.get_absolute_url }}">Read More</a>
+					  </div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	{% else %}
+	
+		<div class="col-sm-8">
+			<div class="alert alert-warning" role="alert">No Articles Found for your search !!!</div>
+		</div>
+	{% endif %}
+
+</div>
+<div class="col-md-2">
+
+</div>
+
+{% endblock %}

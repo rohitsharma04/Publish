@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}Home | {% endblock %}
+
+{% block container %}
+
+<div class="page-header">
+  <h1>Write your article</h1>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-3"></div>
+			<div class="col-sm-6">
+				<form method="POST" action="" class="form">
+					{% csrf_token %}
+					<p>
+						<label for="id_title">Title:</label>
+						<input id="id_title" class="form-control" maxlength="120" name="title" type="text" />
+					</p>
+					<p>
+						<label for="id_content">Content:</label> 
+							<textarea class="form-control" rows=4 id="id_content" name="content">
+						</textarea>
+					</p>
+					<input type="submit" class="btn btn-primary pull-right" value="Post"/>
+				</form>
+			</div>
+
+		<div class="col-sm-3"></div>
+{% endblock %}
+
+{% block script %}
+	<script src="{% static 'js/autosize.min.js' %}"></script>
+	<script>
+    	autosize(document.getElementById('id_content'));
+	</script>
+{% endblock %}
+
+{% block style %}
+
+{% endblock %}
