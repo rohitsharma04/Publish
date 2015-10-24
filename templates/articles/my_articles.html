@@ -16,7 +16,7 @@
 					<div class="panel panel-default">
 					  <div class="panel-heading">
 					    <h3 class="panel-title">
-					    	<a href="{{ article.get_absolute_url }}"><strong>{{article.title}}</strong> by <i>{{article.user.username}}</i>
+					    	<a href="{{ article.get_absolute_url }}"><strong>{{article.title}}</strong> by <i>{{article.user.username}} at {{article.updated|time}} on {{article.updated|date}}</i>
 					    	</a>
 					    	<a href="{{article.edit_article_url }}" >
 					    		<img class="pull-right" src="{% static 'img/edit.png' %}"/>

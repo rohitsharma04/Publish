@@ -13,7 +13,7 @@
 		<div class="row">
 			<div class="page-header">
 			  <h1>
-			  {{article.title}} <small> by {{article.user.username}} </small>
+			  {{article.title}} <small> by {{article.user.username}} at {{article.updated|time}} on {{article.updated|date}}</small>
 			  
 			{% if user == article.user %}
 				<a href="{{article.edit_article_url }}" >

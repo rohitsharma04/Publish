@@ -18,7 +18,7 @@
 					<div class="panel panel-default">
 					  <div class="panel-heading">
 					    <h3 class="panel-title">
-					    	<a href="{{ article.get_absolute_url }}"><strong>{{article.title}}</strong> by <i>{{article.user.username}}</i></a>
+					    	<a href="{{ article.get_absolute_url }}"><strong>{{article.title}}</strong> by <i>{{article.user.username}} at {{article.updated|time}} on {{article.updated|date}}</i></a>
 					    </h3>
 					  </div>
 					  <div class="panel-body">
