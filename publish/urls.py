@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^s/$',search_article,name='search_article'),
     url(r'^my$',my_articles,name='my_articles'),
     url(r'^article/(?P<slug>[\w-]+)/',single_article,name="single_article"),
+    url(r'^edit/(?P<slug>[\w-]+)/',edit_article,name="edit_article"),
     #authusers app
 	url(r'^logout/',logout_view,name='logout_view'),
     url(r'^login/',login_view,name='login_view'),

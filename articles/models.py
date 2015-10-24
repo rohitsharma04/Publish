@@ -25,6 +25,9 @@ class Article(models.Model):
 	def get_absolute_url(self):
 		return reverse("single_article",kwargs={"slug":self.slug})
 
+	def edit_article_url(self):
+		return reverse("edit_article",kwargs={"slug":self.slug})
+
 from django.forms import ModelForm
 
 class ArticleForm(ModelForm):
@@ -41,6 +44,11 @@ class ArticleForm(ModelForm):
 			if not Article.objects.filter(slug=instance.slug).exists():
 				break
 			instance.slug = "%s-%d" % (orig[:max_length - len(str(x)) - 1], x)
+		instance.save()
+		return instance
+
+	def save(self,commit=True):
+		instance = super(ArticleForm, self).save(commit=False)
 		instance.save()
 		return instance
 

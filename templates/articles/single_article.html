@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 {% block title %}Home | {% endblock %}
 
@@ -11,7 +12,15 @@
 	<div class="col-md-8">
 		<div class="row">
 			<div class="page-header">
-			  <h1>{{article.title}} <small> by {{article.user.username}}</small></h1>
+			  <h1>
+			  {{article.title}} <small> by {{article.user.username}} </small>
+			  
+			{% if user == article.user %}
+				<a href="{{article.edit_article_url }}" >
+			    		<img class="pull-right" src="{% static 'img/edit.png' %}"/>
+			    </a>
+			{% endif %}
+			  </h1>
 			</div>
 			<div class="col-md-12">
 				{{article.content}}

@@ -47,6 +47,29 @@ def user_home(request):
 	template = "articles/userhome.html"
 	return render(request,template,context)
 
+@login_required(login_url='/login')
+def edit_article(request,slug):
+	if request.method == "GET":
+		try:
+			article = Article.objects.get(slug=slug,user=request.user)
+			form = ArticleForm(instance=article)
+			context = {'form':form}
+			template = "articles/edit.html"
+			return render(request,template,context)
+		except:
+			raise Http404
+	elif request.method == "POST":
+		form = ArticleForm(request.POST)
+		if form.is_valid():
+			article = Article.objects.get(slug=slug,user=request.user)
+			form = ArticleForm(request.POST, instance = article)
+			form.save(commit=False)
+			return HttpResponseRedirect(article.get_absolute_url())
+		else:
+			raise Http404
+	else:
+		HttpResponseRedirect(reverse("home"))
+
 
 @login_required(login_url='/login')
 def my_articles(request):

@@ -5,7 +5,7 @@
 {% block container %}
 
 <div class="page-header">
-  <h1>Write your article</h1>
+  <h1>Edit Your Article</h1>
 </div>
 <div class="container">
 	<div class="row">
@@ -13,18 +13,15 @@
 			<div class="col-sm-6">
 				<form method="POST" action="" class="form">
 					{% csrf_token %}
-					<p>
-						<label for="id_title">Title:</label>
-						<input id="id_title" class="form-control" maxlength="120" name="title" type="text" />
-					</p>
-					<p>
-						<label for="id_content">Content:</label> 
-							<textarea class="form-control" style="overflow-y:hidden;" rows=4 id="id_content" name="content">
-						</textarea>
-					</p>
+					{{form.as_p}}
 					<input type="submit" class="btn btn-primary pull-right" value="Post"/>
 				</form>
 			</div>
+
+			<script type="text/javascript">
+				document.getElementById('id_content').setAttribute("class", "form-control");
+				document.getElementById('id_title').setAttribute("class", "form-control");
+			</script>
 		<div class="col-sm-3"></div>
 {% endblock %}
 
