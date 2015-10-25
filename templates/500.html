@@ -2,10 +2,14 @@
 
 {% block title %}Error 500{% endblock %}
 
+{% block container %}
+
 {% block jumbotron %}
 
 <h1>Error 500 - Internal Server Error</h1>
   <p>Please go to home page</p>
   <p><a class="btn btn-primary btn-lg" href="{% url 'home' %}" role="button">Home</a></p>
+
+{% endblock %}
 
 {% endblock %}
