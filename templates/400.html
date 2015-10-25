@@ -1,0 +1,11 @@
+{% extends "base.html"}
+
+{% block title %}Error 400{% endblock %}
+
+{% block jumbotron %}
+
+<h1>Error 400 - Bad Request</h1>
+  <p>Please go to home page</p>
+  <p><a class="btn btn-primary btn-lg" href="{% url 'home' %}" role="button">Home</a></p>
+
+{% endblock %}
