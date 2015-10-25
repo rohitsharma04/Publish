@@ -2,6 +2,11 @@
 # $GIT_DIR/info/exclude or the core.excludesFile configuration variable as
 # described in https://git-scm.com/docs/gitignore
 
+
+venv
+*.pyc
+staticfiles
+
 *.egg-info
 *.pot
 *.py[co]
